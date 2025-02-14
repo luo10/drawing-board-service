@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: drawing-board-server
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3006/drawing_board?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 11111
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      enabled: true
+
+server:
+  port: 9008
+
+logging:
+  file:
+    path: ./logs
+  level:
+    org:
+      mybatis: DEBUG
+      apache:
+        ibatis: DEBUG
+    com.yinrj.drawingboardserver.modules.user.domain.repository: DEBUG
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+oss:
+  endpoint: https://oss-rg-china-mainland.aliyuncs.com
+  accessKeyId:
+  accessKeySecret:
+  bucketName:
+  region:
+  objectName:
+  filePrefixPath:
+
+
