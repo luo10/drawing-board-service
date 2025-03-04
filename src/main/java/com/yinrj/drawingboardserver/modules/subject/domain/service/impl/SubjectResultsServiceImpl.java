@@ -3,6 +3,7 @@ package com.yinrj.drawingboardserver.modules.subject.domain.service.impl;
 import com.yinrj.drawingboardserver.modules.subject.domain.entity.SubjectResultsEntity;
 import com.yinrj.drawingboardserver.modules.subject.domain.repository.SubjectResultsRepository;
 import com.yinrj.drawingboardserver.modules.subject.domain.service.SubjectResultsService;
+
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,11 @@ public class SubjectResultsServiceImpl implements SubjectResultsService {
     @Override
     public void insert(SubjectResultsEntity subjectResults) {
         subjectResultsRepository.insert(subjectResults);
+    }
+
+    @Override
+    public Long insertAndGetId(SubjectResultsEntity entity) {
+        // 插入记录并获取ID
+        return subjectResultsRepository.insertAndGetId(entity);
     }
 }

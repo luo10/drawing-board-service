@@ -16,4 +16,6 @@ public interface SubjectResultsRepository {
      */
     void insert(SubjectResultsEntity subjectResults);
 
+    Long insertAndGetId(SubjectResultsEntity entity);
+
 }

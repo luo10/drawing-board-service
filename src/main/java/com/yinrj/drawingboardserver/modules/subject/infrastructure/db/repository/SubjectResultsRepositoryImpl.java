@@ -4,6 +4,8 @@ import com.yinrj.drawingboardserver.modules.subject.domain.entity.SubjectResults
 import com.yinrj.drawingboardserver.modules.subject.domain.repository.SubjectResultsRepository;
 import com.yinrj.drawingboardserver.modules.subject.infrastructure.db.assembler.SubjectResultsAssembler;
 import com.yinrj.drawingboardserver.modules.subject.infrastructure.db.dao.SubjectResultsDAO;
+import com.yinrj.drawingboardserver.modules.subject.infrastructure.db.model.SubjectResultsDO;
+
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -30,6 +32,15 @@ public class SubjectResultsRepositoryImpl implements SubjectResultsRepository {
      */
     @Override
     public void insert(SubjectResultsEntity subjectResults) {
-        subjectResultsDAO.insertSubjectResults(subjectResultsAssembler.toDO(subjectResults));
+        subjectResultsDAO.insert(subjectResultsAssembler.toDO(subjectResults));
     }
+
+    @Override
+    public Long insertAndGetId(SubjectResultsEntity entity) {
+        SubjectResultsDO subjectResultsDO = subjectResultsAssembler.toDO(entity);
+        subjectResultsDAO.insert(subjectResultsDO);
+        // 获取生成的ID并返回
+        return subjectResultsDO.getId();
+    }
+
 }

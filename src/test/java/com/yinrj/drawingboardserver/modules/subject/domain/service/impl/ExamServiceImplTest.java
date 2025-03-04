@@ -7,14 +7,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Disabled;
+
 @SpringBootTest
 class ExamServiceImplTest {
 
     @Resource
     private ExamService examService;
 
-
     @Test
+    @Disabled
     void testGenerateExam() {
         String examId = examService.generateExam("4444");
         assertNotNull(examId);

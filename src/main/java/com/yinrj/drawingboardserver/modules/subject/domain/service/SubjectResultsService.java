@@ -16,4 +16,11 @@ public interface SubjectResultsService {
      */
     void insert(SubjectResultsEntity subjectResults);
 
+    /**
+     * 插入并获取ID
+     *
+     * @param entity 实体
+     * @return 生成的ID
+     */
+    Long insertAndGetId(SubjectResultsEntity entity);
 }

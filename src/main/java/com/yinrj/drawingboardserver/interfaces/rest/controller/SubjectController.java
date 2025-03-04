@@ -31,7 +31,7 @@ public class SubjectController {
 
     @PostMapping(value = "/upload_subject", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public R<Void> uploadSubject(@RequestPart("file") MultipartFile file,
-                                 @RequestParam Map<String, String> params) {
+            @RequestParam Map<String, String> params) {
         var subjectResultsDTO = JsonUtils.parseObject(params, SubjectResultsDTO.class);
         examManager.saveSubjectsResult(file, subjectResultsDTO);
         return R.success();

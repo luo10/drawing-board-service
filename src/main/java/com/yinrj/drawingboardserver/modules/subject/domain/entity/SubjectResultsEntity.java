@@ -14,28 +14,32 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SubjectResultsEntity {
 
-    private Long id;
+    private Long id; // 主键ID
 
-    private String examId;
+    private String examId; // 考试ID
 
-    private String studentId;
+    private String studentId; // 学生ID
 
-    private String subjectTitle;
+    private String subjectTitle; // 科目标题
 
-    private String imgName;
+    private String imgName; // 图片名称
 
-    private String imgUrl;
+    private String imgUrl; // 图片URL地址
 
-    private Long usedTime;
+    private Long usedTime; // 学生作答使用的总时间(毫秒)
 
-    private Long drawnStrokes;
+    private Long drawnStrokes; // 绘制的笔画数量
 
-    private Long undoCount;
+    private Long undoCount; // 撤销操作次数
 
-    private Long redoCount;
+    private Long redoCount; // 重做操作次数
 
-    private Long createTime;
+    private Long firstStrokeTime; // 第一笔落笔时间
 
-    private Long updateTime;
+    private Long totalStrokeDuration; // 总笔画时长
+
+    private Long createTime; // 记录创建时间
+
+    private Long updateTime; // 记录更新时间
 
 }

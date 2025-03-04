@@ -24,7 +24,7 @@ WORKDIR /app
 COPY --from=builder /app/target/drawing-board-server-0.0.1-SNAPSHOT.jar app.jar
 
 # 暴露应用端口
-EXPOSE 9876
+EXPOSE 9008
 
 # 设置容器启动命令
 ENTRYPOINT ["java", "-jar", "app.jar", "--logging.file.path=/app/logs"]

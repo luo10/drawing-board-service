@@ -34,6 +34,10 @@ public class SubjectResultsDO {
 
     private Long redoCount;
 
+    private Long firstStrokeTime; // 第一笔落笔时间
+
+    private Long totalStrokeDuration; // 总笔画时长
+
     private Long createTime;
 
     private Long updateTime;
