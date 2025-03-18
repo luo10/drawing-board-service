@@ -18,7 +18,7 @@ class ExamServiceImplTest {
     @Test
     @Disabled
     void testGenerateExam() {
-        String examId = examService.generateExam("4444");
+        String examId = examService.generateExam("4444", 1L, "1234567890", "1234567890");
         assertNotNull(examId);
     }
 
