@@ -23,4 +23,5 @@ public class UserLoginQuery {
     @NotBlank(message = "studentId is not blank")
     private String studentId;
 
+    private String phone;
 }

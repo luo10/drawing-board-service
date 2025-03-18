@@ -20,4 +20,6 @@ public class UserVO {
     @JsonProperty("student_id")
     private String studentId;
 
+    private String phone;
+
 }

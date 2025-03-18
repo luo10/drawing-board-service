@@ -14,8 +14,9 @@ public interface UserService {
      *
      * @param username  用户名
      * @param studentId 学号
+     * @param phone     手机号
      * @return 用户信息
      */
-    UserEntity login(String username, String studentId);
+    UserEntity login(String username, String studentId, String phone);
 
 }

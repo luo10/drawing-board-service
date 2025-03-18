@@ -24,22 +24,24 @@ public class UserServiceImpl implements UserService {
      *
      * @param username  用户名
      * @param studentId 学号
+     * @param phone     手机号
      * @return 是否登录成功
      */
     @Override
-    public UserEntity login(String username, String studentId) {
+    public UserEntity login(String username, String studentId, String phone) {
         try {
             var user = userRepository.select(username, studentId);
             if (user == null) {
                 user = UserEntity.builder()
                         .username(username)
                         .studentId(studentId)
+                        .phone(phone)
                         .build();
                 userRepository.insert(user);
             }
             return user;
         } catch (Exception e) {
-            log.error("login error. username: {}, studentId: {}", username, studentId, e);
+            log.error("login error. username: {}, studentId: {}, phone: {}", username, studentId, phone, e);
         }
         return null;
     }

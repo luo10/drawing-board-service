@@ -22,6 +22,8 @@ public class UserEntity {
 
     private String studentId;
 
+    private String phone;
+
     private Long createTime;
 
     private Long updateTime;

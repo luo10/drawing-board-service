@@ -27,7 +27,8 @@ public class AuthManager {
     private AuthAssembler assembler;
 
     public UserVO login(@Valid UserLoginQuery userLoginQuery) {
-        var user = userService.login(userLoginQuery.getUsername(), userLoginQuery.getStudentId());
+        var user = userService.login(userLoginQuery.getUsername(), userLoginQuery.getStudentId(),
+                userLoginQuery.getPhone());
         if (user == null) {
             throw new CommonException(StatusCodeEnum.SYSTEM_ERROR);
         }

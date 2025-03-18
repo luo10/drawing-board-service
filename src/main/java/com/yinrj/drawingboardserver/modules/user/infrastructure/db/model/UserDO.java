@@ -20,6 +20,8 @@ public class UserDO {
 
     private String studentId;
 
+    private String phone;
+
     private Long createTime;
 
     private Long updateTime;
