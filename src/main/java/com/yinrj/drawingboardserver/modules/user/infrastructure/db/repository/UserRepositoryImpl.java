@@ -42,10 +42,35 @@ public class UserRepositoryImpl implements UserRepository {
      *
      * @param username  用户名
      * @param studentId 学号
+     * @param phone     手机号
      * @return 用户信息
      */
     @Override
-    public UserEntity select(String username, String studentId) {
-        return userModelAssembler.toEntity(userDAO.selectUser(username, studentId));
+    public UserEntity select(String username, String studentId, String phone) {
+        return userModelAssembler.toEntity(userDAO.selectUser(username, studentId, phone));
+    }
+
+    /**
+     * 根据用户名与学号查询用户信息（不包含手机号）
+     *
+     * @param username  用户名
+     * @param studentId 学号
+     * @return 用户信息
+     */
+    @Override
+    public UserEntity selectWithoutPhone(String username, String studentId) {
+        return userModelAssembler.toEntity(userDAO.selectUserWithoutPhone(username, studentId));
+    }
+
+    /**
+     * 更新用户手机号
+     *
+     * @param user 用户信息
+     */
+    @Override
+    public void updatePhone(UserEntity user) {
+        log.info("update user phone. {}", user);
+        user.setUpdateTime(TimeUtil.now());
+        userDAO.updateUserPhone(userModelAssembler.toDO(user));
     }
 }

@@ -15,7 +15,7 @@ public interface UserDAO {
                         "VALUES (#{username}, #{studentId}, #{phone}, #{createTime}, #{updateTime})")
         void insertUser(UserDO userDO);
 
-        @Select("SELECT * FROM users WHERE name = #{name} AND student_id = #{studentId}")
+        @Select("SELECT * FROM users WHERE name = #{name} AND student_id = #{studentId} AND phone = #{phone}")
         @Results(value = {
                         @Result(column = "id", property = "id"),
                         @Result(column = "name", property = "username"),
@@ -24,6 +24,13 @@ public interface UserDAO {
                         @Result(column = "created_at", property = "createTime"),
                         @Result(column = "updated_at", property = "updateTime")
         }, id = "resultMap")
-        UserDO selectUser(@Param("name") String username, @Param("studentId") String studentId);
+        UserDO selectUser(@Param("name") String username, @Param("studentId") String studentId,
+                        @Param("phone") String phone);
 
+        @Select("SELECT * FROM users WHERE name = #{name} AND student_id = #{studentId}")
+        @ResultMap("resultMap")
+        UserDO selectUserWithoutPhone(@Param("name") String username, @Param("studentId") String studentId);
+
+        @Update("UPDATE users SET phone = #{phone}, updated_at = #{updateTime} WHERE id = #{id}")
+        void updateUserPhone(UserDO userDO);
 }

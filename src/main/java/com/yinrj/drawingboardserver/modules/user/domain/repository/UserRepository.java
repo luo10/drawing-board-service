@@ -21,8 +21,24 @@ public interface UserRepository {
      *
      * @param username  用户名
      * @param studentId 学号
+     * @param phone     手机号
      * @return 用户信息
      */
-    UserEntity select(String username, String studentId);
+    UserEntity select(String username, String studentId, String phone);
 
+    /**
+     * 根据用户名与学号查询用户信息（不包含手机号）
+     *
+     * @param username  用户名
+     * @param studentId 学号
+     * @return 用户信息
+     */
+    UserEntity selectWithoutPhone(String username, String studentId);
+
+    /**
+     * 更新用户手机号
+     *
+     * @param user 用户信息
+     */
+    void updatePhone(UserEntity user);
 }
