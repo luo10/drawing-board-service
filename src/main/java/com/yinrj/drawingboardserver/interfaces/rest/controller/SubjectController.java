@@ -3,6 +3,7 @@ package com.yinrj.drawingboardserver.interfaces.rest.controller;
 import com.yinrj.drawingboardserver.app.dto.SubjectResultsDTO;
 import com.yinrj.drawingboardserver.app.manager.ExamManager;
 import com.yinrj.drawingboardserver.common.utils.JsonUtils;
+import com.yinrj.drawingboardserver.common.utils.TimeUtil;
 import com.yinrj.drawingboardserver.common.vo.R;
 import com.yinrj.drawingboardserver.interfaces.rest.vo.ExamGenVO;
 import jakarta.annotation.Resource;
@@ -10,7 +11,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.Instant;
 import java.util.Map;
 
 /**
@@ -30,19 +30,8 @@ public class SubjectController {
             @RequestParam("login_time") String loginTimeStr,
             @RequestParam("ip_address") String ipAddress,
             @RequestParam("device_info") String deviceInfo) {
-        // 将ISO格式的时间字符串转换为时间戳（毫秒）
-        Long loginTime;
-        try {
-            loginTime = Instant.parse(loginTimeStr).toEpochMilli();
-        } catch (Exception e) {
-            // 如果解析失败，尝试直接将字符串转为Long
-            try {
-                loginTime = Long.parseLong(loginTimeStr);
-            } catch (NumberFormatException ex) {
-                // 如果都无法转换，使用当前时间作为默认值
-                loginTime = Instant.now().toEpochMilli();
-            }
-        }
+        // 使用TimeUtil工具类将时间字符串转换为时间戳
+        Long loginTime = TimeUtil.parseTimeString(loginTimeStr);
         return R.success(examManager.generateExam(studentId, loginTime, ipAddress, deviceInfo));
     }
 
