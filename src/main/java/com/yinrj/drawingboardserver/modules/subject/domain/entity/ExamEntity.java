@@ -22,6 +22,12 @@ public class ExamEntity {
 
     private String studentId;
 
+    private Long loginTime;
+
+    private String ipAddress;
+
+    private String deviceInfo;
+
     private Long createTime;
 
     private Long updateTime;

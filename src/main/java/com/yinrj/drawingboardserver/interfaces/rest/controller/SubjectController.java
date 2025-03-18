@@ -25,8 +25,11 @@ public class SubjectController {
     private ExamManager examManager;
 
     @GetMapping("/generate_exam")
-    public R<ExamGenVO> generateExam(@RequestParam("student_id") String studentId) {
-        return R.success(examManager.generateExam(studentId));
+    public R<ExamGenVO> generateExam(@RequestParam("student_id") String studentId,
+            @RequestParam("login_time") Long loginTime,
+            @RequestParam("ip_address") String ipAddress,
+            @RequestParam("device_info") String deviceInfo) {
+        return R.success(examManager.generateExam(studentId, loginTime, ipAddress, deviceInfo));
     }
 
     @PostMapping(value = "/upload_subject", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

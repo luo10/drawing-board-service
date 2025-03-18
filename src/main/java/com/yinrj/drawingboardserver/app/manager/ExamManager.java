@@ -46,8 +46,8 @@ public class ExamManager {
     @Resource
     private StrokeDetailService strokeDetailService;
 
-    public ExamGenVO generateExam(String studentId) {
-        return new ExamGenVO(examService.generateExam(studentId));
+    public ExamGenVO generateExam(String studentId, Long loginTime, String ipAddress, String deviceInfo) {
+        return new ExamGenVO(examService.generateExam(studentId, loginTime, ipAddress, deviceInfo));
     }
 
     /**

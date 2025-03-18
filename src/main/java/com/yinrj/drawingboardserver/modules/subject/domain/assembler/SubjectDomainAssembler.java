@@ -14,6 +14,6 @@ import org.mapstruct.ReportingPolicy;
 public interface SubjectDomainAssembler {
 
     @Mapping(target = "flag", constant = "0")
-    ExamEntity convert2ExamEntity(String studentId, String examId);
+    ExamEntity convert2ExamEntity(String studentId, String examId, Long loginTime, String ipAddress, String deviceInfo);
 
 }
